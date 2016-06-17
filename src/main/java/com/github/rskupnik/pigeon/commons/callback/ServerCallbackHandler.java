@@ -25,4 +25,5 @@ import com.github.rskupnik.pigeon.commons.Connection;
 public interface ServerCallbackHandler {
     void onStarted();
     void onNewConnection(Connection connection);
+    void onDisconnected(Connection connection);
 }

@@ -103,6 +103,8 @@ public final class Connection extends Thread implements Runnable, Observable {
                         continue;
                     }
 
+                    unwrappedPacket.setConnection(this);
+
                     // Let the server handle the packet
                     notify(Message.RECEIVED_PACKET, unwrappedPacket);
                 } else {
