@@ -26,6 +26,7 @@ import java.io.IOException;
 public abstract class Packet {
 
     int id;
+    Connection connection;
 
     public void send(DataOutputStream outputStream) throws IOException {
         outputStream.writeByte(id);
@@ -37,5 +38,13 @@ public abstract class Packet {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
     }
 }
