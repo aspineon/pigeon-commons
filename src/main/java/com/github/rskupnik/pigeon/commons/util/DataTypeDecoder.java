@@ -33,7 +33,7 @@ public class DataTypeDecoder {
         try {
             if (field.getType().equals(Integer.TYPE) || field.getType().isInstance(Integer.class)) {
                 clientOutputStream.writeInt((int) value);
-            } else if (field.getType().isInstance(String.class)) {
+            } else if (field.getType().isAssignableFrom(String.class)) {
                 clientOutputStream.writeUTF((String) value);
             } else {
                 throw new PigeonException("Cannot handle this data type: "+field.getType());
@@ -47,7 +47,7 @@ public class DataTypeDecoder {
         try {
             if (field.getType().equals(Integer.TYPE) || field.getType().isInstance(Integer.class)) {
                 return inputStream.readInt();
-            } else if (field.getType().isInstance(String.class)) {
+            } else if (field.getType().isAssignableFrom(String.class)) {
                 return inputStream.readUTF();
             } else return null;
         } catch (IOException e) {

@@ -61,7 +61,7 @@ public final class Connection extends Thread implements Runnable, Observable {
         this.clientSocket = clientSocket;
 
         try {
-            clientSocket.setSoTimeout(200);     // TODO: Make sure using socket timeouts is good and find out what value is optimal
+            //clientSocket.setSoTimeout(2000);     // TODO: Make sure using socket timeouts is good and find out what value is optimal
             this.clientInputStream = new DataInputStream(clientSocket.getInputStream());
             this.clientOutputStream = new DataOutputStream(clientSocket.getOutputStream());
         } catch (IOException e) {
@@ -103,6 +103,7 @@ public final class Connection extends Thread implements Runnable, Observable {
                         continue;
                     }
 
+                    unwrappedPacket.setId(packetId);
                     unwrappedPacket.setConnection(this);
 
                     // Let the server handle the packet
